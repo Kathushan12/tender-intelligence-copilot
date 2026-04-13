@@ -1,0 +1,16 @@
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    container_name: tender-copilot-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: tender_copilot
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432"
+    volumes:
+      - tender_copilot_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  tender_copilot_postgres_data:
